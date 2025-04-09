@@ -1,9 +1,13 @@
 # MIKROSERVIS BLOG PROJESİ
 
 
+
 ## Genel Bakış
 
 Bu projede, tüm dış erişimler API Gateway üzerinden sağlanmaktadır. API Gateway, Laravel Passport kullanarak token doğrulaması yapar; kullanıcı kayıt (register) ve giriş (login) işlemleri burada gerçekleştirilir. Doğrulanan istekler, ilgili mikroservislere (Blog, User) yönlendirilir. Böylece, her mikroservis kendi iş mantığına odaklanır ve güvenlik kontrolleri merkezi noktadan yönetilir.
+
+## Mimari : Microservice
+## Tasarım : Repository Design Pattern (API GATEWAY hariç)
 
 ---
 
