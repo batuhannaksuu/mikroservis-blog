@@ -1,0 +1,56 @@
+# MIKROSERVIS BLOG PROJESİ
+
+
+## Genel Bakış
+
+Bu projede, tüm dış erişimler API Gateway üzerinden sağlanmaktadır. API Gateway, Laravel Passport kullanarak token doğrulaması yapar; kullanıcı kayıt (register) ve giriş (login) işlemleri burada gerçekleştirilir. Doğrulanan istekler, ilgili mikroservislere (Blog, User) yönlendirilir. Böylece, her mikroservis kendi iş mantığına odaklanır ve güvenlik kontrolleri merkezi noktadan yönetilir.
+
+---
+
+## Mimari Yapı
+
+- **API Gateway**
+  - **Görevleri:**
+    - Tüm dış istekleri karşılamak ve doğrulamak
+    - Laravel Passport ile token üretimi ve doğrulaması yapmak
+    - Doğrulanmış istekleri ilgili mikroservislere yönlendirmek
+    - Merkezi loglama, hata yönetimi ve rate limiting gibi ek işlevleri yönetmek
+  - **Özellikler:**
+    - Tüm güvenlik işlemleri bu noktada gerçekleştirilir
+    - İsteklerin yönlendirilmesinde Laravel’in Http Client kullanılır
+
+- **Mikroservisler (BlogService, UserService)**
+  - **Görevleri:**
+    - Kendi iş mantığını ve veritabanı işlemlerini yönetmek
+    - Dış erişime kapalı, yalnızca API Gateway’den gelen istekleri işlemek
+  - **Not:**
+    - Bu servisler, doğrudan kullanıcı doğrulaması ile uğraşmaz; tüm güvenlik API Gateway’de ele alınır
+
+    ### Ön Gereksinimler
+
+    - PHP 8.x ve Composer
+    - Laravel 10
+    - MySQL veya tercih ettiğiniz diğer veritabanı yönetim sistemi
+    - Laragon, Homestead, Docker ya da yerel geliştirme ortamınız (bu örnek olarak Laragon kullandım). !!! Sabahtan şehir dışına seyahat etmem gerektiği için instanceleri ayrı proje olarak çalıştırdım. Docker kurulumu yapmadım.
+
+    ### Kurulum
+
+    API Gateway .env dosyası içerisine aşağıdakiler eklenmelidir.
+    BLOG_SERVICE_URL=http://localhost:8002
+    USER_SERVICE_URL=http://localhost:8001
+    DB_DATABASE=mulakat-microservice-user
+
+    BlogService .env dosyası içerisine aşağıdakiler eklenmelidir.
+    DB_DATABASE=mulakat-microservice-blog
+
+    UserService .env dosyası içerisine aşağıdakiler eklenmelidir.
+    DB_DATABASE=mulakat-microservice-user
+
+    Proje çalıştırılırken API Gateway http://localhost:8000 portundan çalıştırılmıştır.
+
+    Ek olarak Postman koleksiyonu ve veritabanı kök dizinde yer almaktadır.
+
+
+    https://github.com/batuhannaksuu/mikroservis-blog
+
+

@@ -375,7 +375,6 @@
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
-      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/CommentService/phpunit.xml" custom_loader_path="$PROJECT_DIR$/CommentService/vendor/autoload.php" use_configuration_file="true" />
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/UserService/phpunit.xml" custom_loader_path="$PROJECT_DIR$/UserService/vendor/autoload.php" use_configuration_file="true" />
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/BlogService/phpunit.xml" custom_loader_path="$PROJECT_DIR$/BlogService/vendor/autoload.php" use_configuration_file="true" />
     </phpunit_settings>

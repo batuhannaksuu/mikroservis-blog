@@ -15,9 +15,7 @@ use App\Http\Controllers\GatewayController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
     Route::get('posts', [GatewayController::class, 'getPosts']);
     Route::middleware('auth:api')->group(function () {
         Route::post('posts', [GatewayController::class, 'createPost']);
